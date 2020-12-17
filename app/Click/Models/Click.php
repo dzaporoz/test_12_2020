@@ -2,7 +2,6 @@
 
 namespace App\Click\Models;
 
-use Illuminate\Contracts\Support\Jsonable;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Ramsey\Uuid\Uuid;
@@ -20,7 +19,6 @@ class Click extends Model
         "ua",
         "ip",
         "ref",
-        "param1",
         "param2",
         "error",
         "bad_domain"

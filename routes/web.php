@@ -19,4 +19,6 @@ Route::group(['prefix'=>'/','as'=>'click.'], function() {
     Route::apiResource('clicks', 'Click\ClickController')->except('store', 'update', 'destroy');
 
     Route::get("click", "Click\TrackingController@track");
+    Route::get('/succes/{id}', "Click\TrackingController@success")->name('success');
+    Route::get('/error/{id}', "Click\TrackingController@success")->name('error');
 });

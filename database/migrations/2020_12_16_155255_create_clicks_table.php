@@ -15,16 +15,15 @@ class CreateClicksTable extends Migration
     {
         Schema::create('clicks', function (Blueprint $table) {
             $table->uuid('id')->unique();
-            $table->string("ua", 200);
+            $table->string("ua", 200)->nullable();
             $table->ipAddress("ip");
-            $table->string("ref", 2050)->nullable();
-            $table->string("param1", 2050)->nullable();
-            $table->string("param2", 2050)->nullable();
+            $table->string("ref", 510)->nullable();
+            $table->string("param2", 100)->nullable();
             $table->unsignedInteger("error")->default(0);
             $table->bigInteger("bad_domain")->default(0);
 
             $table->primary('id');
-            $table->unique(["ip", "ref", "ua", "param1"], "ip_ref_ua_param1_unique");
+            $table->index("ip");
         });
     }
 

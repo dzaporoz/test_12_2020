@@ -32,7 +32,6 @@ class GetClicksRequest extends FormRequest
             'ua'        => 'sometimes|required',
             'ip'        => 'sometimes|required',
             'ref'       => 'sometimes|required',
-            'param1'    => 'sometimes|required',
             'param2'    => 'sometimes|required',
         ];
     }

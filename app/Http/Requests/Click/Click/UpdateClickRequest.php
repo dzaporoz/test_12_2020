@@ -28,7 +28,6 @@ class UpdateClickRequest extends FormRequest
             'ua'        => 'sometimes|required',
             'ip'        => 'sometimes|required|ip',
             'ref'       => 'sometimes|required',
-            'param1'    => 'sometimes|required',
             'param2'    => 'sometimes|required',
         ];
     }

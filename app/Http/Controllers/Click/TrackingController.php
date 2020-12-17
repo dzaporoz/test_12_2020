@@ -3,9 +3,10 @@
 namespace App\Http\Controllers\Click;
 
 use App\Click\ClickServiceInterface;
+use App\Click\Repositories\ClickRepositoryInterface;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\View\View;
+use Illuminate\Support\Facades\Session;
 
 class TrackingController extends Controller
 {
@@ -22,29 +23,54 @@ class TrackingController extends Controller
     /** @var ClickServiceInterface */
     protected $service;
 
-    public function __construct(ClickServiceInterface $s)
+    /** @var ClickRepositoryInterface */
+    protected $repository;
+
+    public function __construct(ClickServiceInterface $s, ClickRepositoryInterface $r)
     {
         $this->service = $s;
+        $this->repository = $r;
     }
 
-    public function track(Request $request)
+    public function error($id)
     {
-        return view('tracking.admin');
+        return $this->repository->find($id);
+    }
+
+    public function success($id)
+    {
+        return $this->repository->find($id);
+    }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function track(Request $request): \Illuminate\Http\RedirectResponse
+    {
         $clickParams = [
-            'ip'    => $this->getVisitorIp() ?: $request->ip(),
+            'ip'    => $this->getVisitorIp($request) ?: $request->ip(),
             'ua'    => $request->userAgent(),
-            'ref'   => $request->headers->get('referer'),
+            'ref'   => $request->server('HTTP_REFERER'),
             'param1'=> $request->input('param1'),
             'param2'=> $request->input('param2')
         ];
 
-        return $this->service->TrackClick($clickParams);
+        $result = $this->service->TrackClick($clickParams);
+
+        if (! empty($result['error'])) {
+            return redirect()->route('click.error', ['id' => $result['id']]);
+        } else {
+            return redirect()->route('click.success', ['id' => $result['id']]);
+        }
     }
 
-    protected function getVisitorIp() : ?string {
+    protected function getVisitorIp(Request $request) : ?string
+    {
         foreach (self::IP_SOURCES as $key){
-            if (array_key_exists($key, $_SERVER) === true){
-                foreach (explode(',', $_SERVER[$key]) as $ip){
+            $ips = $request->server($key);
+            if ($ips !== null){
+                foreach (explode(',', $ips) as $ip){
                     $ip = trim($ip);
                     if (filter_var(
                         $ip,

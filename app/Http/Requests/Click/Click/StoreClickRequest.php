@@ -24,10 +24,9 @@ class StoreClickRequest extends FormRequest
     public function rules()
     {
         return [
-            'ua'        => 'required',
-            'ip'        => 'required|ip',
-            'ref'       => 'required',
-            'param1'    => 'sometimes|required',
+            'ua'        => 'sometimes|required',
+            'ip'        => 'sometimes|required|ip',
+            'ref'       => 'sometimes|required',
             'param2'    => 'sometimes|required',
         ];
     }
