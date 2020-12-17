@@ -34,12 +34,18 @@ class TrackingController extends Controller
 
     public function error($id)
     {
-        return $this->repository->find($id);
+        $data = [
+            'click' => $this->repository->find($id)
+        ];
+        return view('tracking.show-click', $data);
     }
 
     public function success($id)
     {
-        return $this->repository->find($id);
+        $data = [
+            'click' => $this->repository->find($id)
+        ];
+        return view('tracking.show-click', $data);
     }
 
     /**
@@ -58,7 +64,12 @@ class TrackingController extends Controller
 
         $result = $this->service->TrackClick($clickParams);
 
+        if (! empty($result['redirect'])) {
+            $request->session()->flash('redirect', $result['redirect']);
+        }
+
         if (! empty($result['error'])) {
+            $request->session()->flash('error', $result['error']);
             return redirect()->route('click.error', ['id' => $result['id']]);
         } else {
             return redirect()->route('click.success', ['id' => $result['id']]);

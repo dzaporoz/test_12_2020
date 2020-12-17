@@ -36,6 +36,7 @@ class ClickService implements ClickServiceInterface
 
         if ($badDomain != null) {
             $result['error'] = "Domain $badDomain is bad";
+            $result['redirect'] = 'http://google.com';
             $click->bad_domain = 1;
         }
 
