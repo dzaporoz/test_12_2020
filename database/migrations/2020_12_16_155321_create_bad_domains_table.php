@@ -15,7 +15,7 @@ class CreateBadDomainsTable extends Migration
     {
         Schema::create('bad_domains', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->text("name");
+            $table->text("name")->unique();
         });
     }
 

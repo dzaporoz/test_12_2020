@@ -5,6 +5,7 @@ namespace App\Click\Models;
 use Illuminate\Contracts\Support\Jsonable;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Ramsey\Uuid\Uuid;
 
 /**
  * @mixin Builder
@@ -16,7 +17,6 @@ class Click extends Model
     public $incrementing = false;
 
     protected $fillable = [
-        "id",
         "ua",
         "ip",
         "ref",
@@ -25,4 +25,16 @@ class Click extends Model
         "error",
         "bad_domain"
     ];
+
+    /*
+        generate new id during model creation
+    */
+    public static function boot()
+    {
+        parent::boot();
+
+        static::creating(function($model) {
+            $model->id = Uuid::uuid4();
+        });
+    }
 }

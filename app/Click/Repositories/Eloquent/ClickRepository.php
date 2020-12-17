@@ -15,22 +15,4 @@ class ClickRepository extends AbstractEloquentRepository implements ClickReposit
     {
         return $this->model;
     }
-
-    public function findByField(string $field, string $value) {
-
-    }
-
-    public function create(array $data) : Click {
-        return Click::create($data);
-    }
-
-    public function update(int $id, array $data) : Click {
-        $model = Click::findOrFail($id);
-        $model->update($data);
-    }
-
-    public function delete(int $id) {
-        $model = Click::find($id);
-        $model->delete();
-    }
 }

@@ -13,7 +13,7 @@ abstract class AbstractEloquentRepository implements RepositoryInterface
 {
     abstract public function getModel() : string;
 
-    public function all(int $limit, int $offset, string $sort_by = "", string $order = "desc", array $filters = []) : iterable {
+    public function all(int $limit, int $offset, string $sort_by = null, string $order = null, array $filters = []) : iterable {
         /** @var Builder $query */
         $query = $this->getModel()::query();
 
@@ -23,8 +23,8 @@ abstract class AbstractEloquentRepository implements RepositoryInterface
                 return $q->orderBy($sort_by, $order);
             })
             ->when(! empty($filters), function ($q) use ($filters) {
-                foreach ($filters as $filter) {
-                    $q->where($filter['field'], 'like', "%${filter['value']}%");
+                foreach ($filters as $column => $value) {
+                    $q->where($column, 'like', "%$value%");
                 }
                 return $q;
             });
@@ -32,12 +32,8 @@ abstract class AbstractEloquentRepository implements RepositoryInterface
         return $query->get();
     }
 
-    public function find(int $id) : Jsonable {
-        $model = $this->getModel()::find($id);
-
-        if (! $model) {
-            throw new ModelNotFoundException();
-        }
+    public function find($id) : Jsonable {
+        $model = $this->getModel()::findOrFail($id);
 
         return $model;
     }
@@ -46,24 +42,16 @@ abstract class AbstractEloquentRepository implements RepositoryInterface
         return $this->getModel()::create($data);
     }
 
-    public function update(int $id, array $data) : Jsonable {
-        $model = $this->getModel()::find($id);
-
-        if (! $model) {
-            throw new ModelNotFoundException();
-        }
+    public function update($id, array $data) : Jsonable {
+        $model = $this->getModel()::findOrFail($id);
 
         $model->update($data);
 
         return $model;
     }
 
-    public function delete(int $id) {
-        $model = $this->getModel()::find($id);
-
-        if (! $model) {
-            throw (new ModelNotFoundException())->setModel($this->getModel());
-        }
+    public function delete($id) {
+        $model = $this->getModel()::findOrFail($id);
 
         $model->delete();
     }

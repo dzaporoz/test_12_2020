@@ -19,6 +19,6 @@ class VerifyCsrfToken extends Middleware
      * @var array
      */
     protected $except = [
-        //
+        'bad_domains', 'bad_domains/*', 'clicks', 'click.update'
     ];
 }
