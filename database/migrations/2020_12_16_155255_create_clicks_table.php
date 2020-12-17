@@ -23,7 +23,8 @@ class CreateClicksTable extends Migration
             $table->unsignedInteger("error")->default(0);
             $table->bigInteger("bad_domain")->default(0);
 
-            $table->primary(["ip", "ref", "ua", "param1"]);
+            $table->primary('id');
+            $table->unique(["ip", "ref", "ua", "param1"], "ip_ref_ua_param1_unique");
         });
     }
 
