@@ -4,6 +4,8 @@
 namespace App\Click\Providers;
 
 
+use App\Click\ClickService;
+use App\Click\ClickServiceInterface;
 use App\Click\Repositories\BadDomainRepositoryInterface;
 use App\Click\Repositories\ClickRepositoryInterface;
 use App\Click\Repositories\Eloquent\BadDomainRepository;
@@ -21,6 +23,7 @@ class ClickServiceProvider extends ServiceProvider
     {
         $this->app->bind(BadDomainRepositoryInterface::class, BadDomainRepository::class);
         $this->app->bind(ClickRepositoryInterface::class, ClickRepository::class);
+        $this->app->bind(ClickServiceInterface::class, ClickService::class);
     }
 
     /**

@@ -13,10 +13,10 @@
 
 // Click service routes
 Route::group(['prefix'=>'/','as'=>'click.'], function() {
-    Route::get('/', function () {
-        return view('welcome');
-    });
+    Route::get('/', "Click\AdminController@index");
 
     Route::apiResource('bad_domains', 'Click\BadDomainController');
     Route::apiResource('clicks', 'Click\ClickController')->except('store', 'update', 'destroy');
+
+    Route::get("click", "Click\TrackingController@track");
 });
