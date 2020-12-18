@@ -26,16 +26,4 @@ class Click extends Model
         "error",
         "bad_domain"
     ];
-
-    /*
-        generate new id during model creation
-    */
-    public static function boot()
-    {
-        parent::boot();
-
-        static::creating(function($model) {
-            $model->id = Uuid::uuid4();
-        });
-    }
 }

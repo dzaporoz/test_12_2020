@@ -9,6 +9,7 @@ use App\Tracking\Models\Click;
 use App\Tracking\Repositories\ClickRepositoryInterface;
 use Illuminate\Contracts\Support\Jsonable;
 use Illuminate\Database\QueryException;
+use Ramsey\Uuid\Uuid;
 
 class ClickRepository extends AbstractEloquentRepository implements ClickRepositoryInterface
 {
@@ -20,7 +21,11 @@ class ClickRepository extends AbstractEloquentRepository implements ClickReposit
     }
 
     public function create(array $data) : Jsonable {
-        return $this->getModel()::create($data);
+        $model = $this->getModel()::make($data);
+        $model->id = Uuid::uuid4();
+        $model->save();
+
+        return $model;
     }
 
     public function searchForDuplicate(?string $ip, ?string $ua, ?string $ref, ?string $param1) : ?Jsonable {
