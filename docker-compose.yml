@@ -1,0 +1,61 @@
+version: '3'
+services:
+
+  #PHP Service
+  test_task_app:
+    build:
+      args:
+        user: "${USER}"
+        uid: "${UID}"
+      context: .
+      dockerfile: Dockerfile
+    image: test_task_app
+    container_name: test_task_app
+    environment:
+      MYSQL_USER: laravel
+      MYSQL_PASSWORD: laravel_password
+    restart: unless-stopped
+    working_dir: /var/www/tracking
+    volumes:
+      - ./src:/var/www/tracking
+    networks:
+      - laravel
+
+  #Nginx Service
+  test_task_nginx:
+    image: nginx:stable-alpine
+    container_name: test_task_nginx
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+    volumes:
+      - ./src:/var/www/tracking
+      - ./nginx/conf.d/:/etc/nginx/conf.d/
+    networks:
+      - laravel
+
+  #MySQL Service
+  test_task_mysql:
+    image: mysql:5.7
+    container_name: test_task_mysql
+    restart: unless-stopped
+    ports:
+      - "30306:3306"
+    environment:
+      MYSQL_DATABASE: laravel
+      MYSQL_ROOT_PASSWORD: superpassword
+      MYSQL_USER: laravel
+      MYSQL_PASSWORD: laravel_password
+    volumes:
+      - dbdata:/var/lib/mysql/
+    networks:
+      - laravel
+
+#Docker Networks
+networks:
+  laravel:
+    driver: bridge
+#Volumes
+volumes:
+  dbdata:
+    driver: local
