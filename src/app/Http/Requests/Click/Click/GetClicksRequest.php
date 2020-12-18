@@ -39,9 +39,9 @@ class GetClicksRequest extends FormRequest
 
     public function prepareForValidation()
     {
-        $this->merge([
+        $this->replace(array_merge([
             'limit' => 20,
             'offset' => 0,
-        ]);
+        ], $this->all()));
     }
 }
