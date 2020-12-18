@@ -1,14 +1,14 @@
 <?php
 
 
-namespace App\Click;
+namespace App\Tracking;
 
 
-use App\Click\Repositories\BadDomainRepositoryInterface;
-use App\Click\Repositories\ClickRepositoryInterface;
+use App\Tracking\Repositories\BadDomainRepositoryInterface;
+use App\Tracking\Repositories\ClickRepositoryInterface;
 use Illuminate\Contracts\Support\Jsonable;
 
-class ClickService implements ClickServiceInterface
+class TrackingService implements TrackingServiceInterface
 {
     protected $badDomainRepository;
     protected $clickRepository;
@@ -68,7 +68,7 @@ class ClickService implements ClickServiceInterface
             $host = substr($host, 4);
         }
 
-        foreach ($this->badDomainRepository->findByName($host) as $item) {
+        foreach ($this->badDomainRepository->findBySubdomain($host) as $item) {
             return $item->name;
         }
 

@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Click;
+namespace App\Http\Controllers\Tracking;
 
-use App\Click\ClickService;
-use App\Click\Repositories\ClickRepositoryInterface;
+use App\Tracking\TrackingService;
+use App\Tracking\Repositories\ClickRepositoryInterface;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Click\Click\DeleteClickRequest;
 use App\Http\Requests\Click\Click\GetClicksRequest;

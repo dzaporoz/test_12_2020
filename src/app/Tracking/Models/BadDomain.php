@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Click\Models;
+namespace App\Tracking\Models;
 
 use Illuminate\Contracts\Support\Jsonable;
 use Illuminate\Database\Eloquent\Builder;

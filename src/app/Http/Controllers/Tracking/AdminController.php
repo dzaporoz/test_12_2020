@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Click;
+namespace App\Http\Controllers\Tracking;
 
-use App\Click\Repositories\BadDomainRepositoryInterface;
-use App\Click\Repositories\ClickRepositoryInterface;
+use App\Tracking\Repositories\BadDomainRepositoryInterface;
+use App\Tracking\Repositories\ClickRepositoryInterface;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 

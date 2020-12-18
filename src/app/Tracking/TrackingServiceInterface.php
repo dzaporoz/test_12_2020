@@ -1,13 +1,13 @@
 <?php
 
 
-namespace App\Click;
+namespace App\Tracking;
 
 
-use App\Click\Models\Click;
+use App\Tracking\Models\Click;
 use Illuminate\Contracts\Support\Jsonable;
 
-interface ClickServiceInterface
+interface TrackingServiceInterface
 {
     public function TrackClick(array $data) : array;
 }

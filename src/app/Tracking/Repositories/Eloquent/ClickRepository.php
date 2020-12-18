@@ -1,12 +1,12 @@
 <?php
 
 
-namespace App\Click\Repositories\Eloquent;
+namespace App\Tracking\Repositories\Eloquent;
 
 
-use App\Click\Exceptions\EntryAlreadyExistsException;
-use App\Click\Models\Click;
-use App\Click\Repositories\ClickRepositoryInterface;
+use App\Tracking\Exceptions\EntryAlreadyExistsException;
+use App\Tracking\Models\Click;
+use App\Tracking\Repositories\ClickRepositoryInterface;
 use Illuminate\Contracts\Support\Jsonable;
 use Illuminate\Database\QueryException;
 

@@ -13,12 +13,12 @@
 
 // Click service routes
 Route::group(['prefix'=>'/','as'=>'click.'], function() {
-    Route::get('/', "Click\AdminController@index");
+    Route::get('/', "Tracking\AdminController@index");
 
-    Route::apiResource('bad_domains', 'Click\BadDomainController');
-    Route::apiResource('clicks', 'Click\ClickController')->except('store', 'update', 'destroy');
+    Route::apiResource('bad_domains', 'Tracking\BadDomainController');
+    Route::apiResource('clicks', 'Tracking\ClickController')->except('store', 'update', 'destroy');
 
-    Route::get("click", "Click\TrackingController@track");
-    Route::get('/succes/{id}', "Click\TrackingController@success")->name('success');
-    Route::get('/error/{id}', "Click\TrackingController@success")->name('error');
+    Route::get("click", "Tracking\TrackingController@track");
+    Route::get('/succes/{id}', "Tracking\TrackingController@success")->name('success');
+    Route::get('/error/{id}', "Tracking\TrackingController@success")->name('error');
 });

@@ -1,18 +1,18 @@
 <?php
 
 
-namespace App\Click\Providers;
+namespace App\Tracking\Providers;
 
 
-use App\Click\ClickService;
-use App\Click\ClickServiceInterface;
-use App\Click\Repositories\BadDomainRepositoryInterface;
-use App\Click\Repositories\ClickRepositoryInterface;
-use App\Click\Repositories\Eloquent\BadDomainRepository;
-use App\Click\Repositories\Eloquent\ClickRepository;
+use App\Tracking\TrackingService;
+use App\Tracking\TrackingServiceInterface;
+use App\Tracking\Repositories\BadDomainRepositoryInterface;
+use App\Tracking\Repositories\ClickRepositoryInterface;
+use App\Tracking\Repositories\Eloquent\BadDomainRepository;
+use App\Tracking\Repositories\Eloquent\ClickRepository;
 use Illuminate\Support\ServiceProvider;
 
-class ClickServiceProvider extends ServiceProvider
+class TrackingServiceProvider extends ServiceProvider
 {
     /**
      * Register any application services.
@@ -23,7 +23,7 @@ class ClickServiceProvider extends ServiceProvider
     {
         $this->app->bind(BadDomainRepositoryInterface::class, BadDomainRepository::class);
         $this->app->bind(ClickRepositoryInterface::class, ClickRepository::class);
-        $this->app->bind(ClickServiceInterface::class, ClickService::class);
+        $this->app->bind(TrackingServiceInterface::class, TrackingService::class);
     }
 
     /**

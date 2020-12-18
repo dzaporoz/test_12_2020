@@ -1,11 +1,11 @@
 <?php
 
 
-namespace App\Click\Repositories\Eloquent;
+namespace App\Tracking\Repositories\Eloquent;
 
 
-use App\Click\Models\BadDomain;
-use App\Click\Repositories\BadDomainRepositoryInterface;
+use App\Tracking\Models\BadDomain;
+use App\Tracking\Repositories\BadDomainRepositoryInterface;
 use Illuminate\Contracts\Support\Jsonable;
 use Illuminate\Support\Facades\DB;
 
@@ -18,7 +18,7 @@ class BadDomainRepository extends AbstractEloquentRepository implements BadDomai
         return $this->model;
     }
 
-    public function findByName(string $name) : iterable
+    public function findBySubdomain(string $name) : iterable
     {
         return BadDomain::where('name', $name)
             ->orWhereRaw("? LIKE CONCAT('%.', name)", [$name])

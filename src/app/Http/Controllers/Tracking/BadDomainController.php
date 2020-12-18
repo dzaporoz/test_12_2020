@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\Click;
+namespace App\Http\Controllers\Tracking;
 
-use App\Click\Repositories\BadDomainRepositoryInterface;
+use App\Tracking\Repositories\BadDomainRepositoryInterface;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Click\BadDomain\DeleteBadDomainRequest;
 use App\Http\Requests\Click\BadDomain\ShowBadDomainRequest;

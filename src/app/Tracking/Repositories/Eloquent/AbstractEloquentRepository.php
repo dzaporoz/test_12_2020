@@ -1,11 +1,11 @@
 <?php
 
 
-namespace App\Click\Repositories\Eloquent;
+namespace App\Tracking\Repositories\Eloquent;
 
 
-use App\Click\Exceptions\ModelNotFoundException;
-use App\Click\Repositories\RepositoryInterface;
+use App\Tracking\Exceptions\ModelNotFoundException;
+use App\Tracking\Repositories\RepositoryInterface;
 use Illuminate\Contracts\Support\Jsonable;
 use Illuminate\Database\Query\Builder;
 

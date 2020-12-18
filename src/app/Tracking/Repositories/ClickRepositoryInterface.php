@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Click\Repositories;
+namespace App\Tracking\Repositories;
 
 
 use Illuminate\Contracts\Support\Jsonable;

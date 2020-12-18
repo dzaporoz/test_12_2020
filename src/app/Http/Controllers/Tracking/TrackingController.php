@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Click;
+namespace App\Http\Controllers\Tracking;
 
-use App\Click\ClickServiceInterface;
-use App\Click\Repositories\ClickRepositoryInterface;
+use App\Tracking\TrackingServiceInterface;
+use App\Tracking\Repositories\ClickRepositoryInterface;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -20,13 +20,13 @@ class TrackingController extends Controller
         'REMOTE_ADDR'
     ];
 
-    /** @var ClickServiceInterface */
+    /** @var TrackingServiceInterface */
     protected $service;
 
     /** @var ClickRepositoryInterface */
     protected $repository;
 
-    public function __construct(ClickServiceInterface $s, ClickRepositoryInterface $r)
+    public function __construct(TrackingServiceInterface $s, ClickRepositoryInterface $r)
     {
         $this->service = $s;
         $this->repository = $r;

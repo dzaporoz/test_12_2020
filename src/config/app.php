@@ -175,7 +175,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
-        \App\Click\Providers\ClickServiceProvider::class,
+        App\Tracking\Providers\TrackingServiceProvider::class,
     ],
 
     /*

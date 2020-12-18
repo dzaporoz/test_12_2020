@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Click\Models;
+namespace App\Tracking\Models;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
