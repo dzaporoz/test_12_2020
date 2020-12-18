@@ -79,7 +79,7 @@
     @if(session('redirect'))
         <script>
             setTimeout(function () {
-                window.location = {{ session('redirect') }};
+                window.location = "{{ session('redirect') }}";
             }, 5000);
         </script>
     @endif
