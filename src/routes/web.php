@@ -15,7 +15,7 @@
 Route::group(['prefix'=>'/','as'=>'click.'], function() {
     Route::get('/', "Tracking\AdminController@index");
 
-    Route::apiResource('bad_domains', 'Tracking\BadDomainController');
+    Route::apiResource('bad_domains', 'Tracking\BadDomainController')except('update', 'destroy');
     Route::apiResource('clicks', 'Tracking\ClickController')->except('store', 'update', 'destroy');
 
     Route::get("click", "Tracking\TrackingController@track");

@@ -4,11 +4,9 @@ namespace App\Http\Controllers\Tracking;
 
 use App\Tracking\Repositories\BadDomainRepositoryInterface;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Click\BadDomain\DeleteBadDomainRequest;
 use App\Http\Requests\Click\BadDomain\ShowBadDomainRequest;
 use App\Http\Requests\Click\BadDomain\StoreBadDomainRequest;
 use App\Http\Requests\Click\BadDomain\GetBadDomainsRequest;
-use App\Http\Requests\Click\BadDomain\UpdateBadDomainRequest;
 use Illuminate\Http\JsonResponse;
 
 class BadDomainController extends Controller
@@ -65,31 +63,5 @@ class BadDomainController extends Controller
     public function show(ShowBadDomainRequest $request): JsonResponse
     {
         return response()->json($this->repository->find($request->input("bad_domain")));
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param UpdateBadDomainRequest $request
-     * @return JsonResponse
-     */
-    public function update(UpdateBadDomainRequest $request): JsonResponse
-    {
-        return response()->json(
-            $this->repository->update(
-                $request->input('bad_domain'), $request->all()
-            ));
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param DeleteBadDomainRequest $request
-     * @param  $id
-     * @return JsonResponse
-     */
-    public function destroy(DeleteBadDomainRequest $request): JsonResponse
-    {
-        return response()->json($this->repository->delete($request->input("bad_domain")));
     }
 }

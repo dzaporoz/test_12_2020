@@ -2,15 +2,10 @@
 
 namespace App\Http\Controllers\Tracking;
 
-use App\Tracking\TrackingService;
 use App\Tracking\Repositories\ClickRepositoryInterface;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Click\Click\DeleteClickRequest;
 use App\Http\Requests\Click\Click\GetClicksRequest;
 use App\Http\Requests\Click\Click\ShowClickRequest;
-use App\Http\Requests\Click\Click\StoreClickRequest;
-use App\Http\Requests\Click\Click\UpdateClickRequest;
-use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 
 class ClickController extends Controller
@@ -50,17 +45,6 @@ class ClickController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param StoreClickRequest $request
-     * @return JsonResponse
-     */
-//    public function store(StoreClickRequest $request): JsonResponse
-//    {
-//        return response()->json($this->repository->create($request->all()));
-//    }
-
-    /**
      * Display the specified resource.
      *
      * @param ShowClickRequest $request
@@ -70,30 +54,4 @@ class ClickController extends Controller
     {
         return response()->json($this->repository->find($request->input("click")));
     }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param UpdateClickRequest $request
-     * @return JsonResponse
-     */
-//    public function update(UpdateClickRequest $request): JsonResponse
-//    {
-//        return response()->json(
-//            $this->repository->update(
-//                $request->input('click'), $request->all()
-//            ));
-//    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param DeleteClickRequest $request
-     * @param  $id
-     * @return JsonResponse
-     */
-//    public function destroy(DeleteClickRequest $request): JsonResponse
-//    {
-//        return response()->json($this->repository->delete($request->input("click")));
-//    }
 }
