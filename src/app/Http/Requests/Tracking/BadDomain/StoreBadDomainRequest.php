@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Click\BadDomain;
+namespace App\Http\Requests\Tracking\BadDomain;
 
 use Illuminate\Foundation\Http\FormRequest;
 

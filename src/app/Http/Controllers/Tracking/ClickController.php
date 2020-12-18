@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Tracking;
 
 use App\Tracking\Repositories\ClickRepositoryInterface;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Click\Click\GetClicksRequest;
-use App\Http\Requests\Click\Click\ShowClickRequest;
+use App\Http\Requests\Tracking\Click\GetClicksRequest;
+use App\Http\Requests\Tracking\Click\ShowClickRequest;
 use Illuminate\Http\JsonResponse;
 
 class ClickController extends Controller

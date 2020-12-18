@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Click\BadDomain;
+namespace App\Http\Requests\Tracking\Click;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class GetBadDomainsRequest extends FormRequest
+class GetClicksRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -28,7 +28,12 @@ class GetBadDomainsRequest extends FormRequest
             'offset'    => 'sometimes|required|numeric|gte:0',
             'sort_by'   => 'sometimes|required',
             'order'     => 'sometimes|required',
-            'name'      => 'sometimes|required',
+            'id'        => 'sometimes|required',
+            'ua'        => 'sometimes|required',
+            'ip'        => 'sometimes|required',
+            'ref'       => 'sometimes|required',
+            'param1'    => 'sometimes|required',
+            'param2'    => 'sometimes|required',
         ];
     }
 

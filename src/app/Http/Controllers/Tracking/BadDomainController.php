@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Tracking;
 
 use App\Tracking\Repositories\BadDomainRepositoryInterface;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Click\BadDomain\ShowBadDomainRequest;
-use App\Http\Requests\Click\BadDomain\StoreBadDomainRequest;
-use App\Http\Requests\Click\BadDomain\GetBadDomainsRequest;
+use App\Http\Requests\Tracking\BadDomain\ShowBadDomainRequest;
+use App\Http\Requests\Tracking\BadDomain\StoreBadDomainRequest;
+use App\Http\Requests\Tracking\BadDomain\GetBadDomainsRequest;
 use Illuminate\Http\JsonResponse;
 
 class BadDomainController extends Controller

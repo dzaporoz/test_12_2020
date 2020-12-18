@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Click\BadDomain;
+namespace App\Http\Requests\Tracking\Click;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class GetBadDomainRequest extends FormRequest
+class ShowClickRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,12 +24,12 @@ class GetBadDomainRequest extends FormRequest
     public function rules()
     {
         return [
-            'id' => 'required|numeric|gt:0'
+            'click' => 'required'
         ];
     }
 
     protected function prepareForValidation()
     {
-        $this->merge([$this->route('id')]);
+        $this->merge(['click' => $this->route('click')]);
     }
 }
