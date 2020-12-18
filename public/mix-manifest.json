@@ -3,5 +3,7 @@
     "/js/jquery.min.js": "/js/jquery.min.js",
     "/js/adminlte.min.js": "/js/adminlte.min.js",
     "/css/adminlte.min.css": "/css/adminlte.min.css",
-    "/css/all.min.css": "/css/all.min.css"
+    "/css/all.min.css": "/css/all.min.css",
+    "/css/dataTables.bootstrap4.min.css": "/css/dataTables.bootstrap4.min.css",
+    "/js/datatables.js": "/js/datatables.js"
 }

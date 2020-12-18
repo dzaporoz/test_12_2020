@@ -37,13 +37,16 @@ class ClickController extends Controller
     {
         $filters = $request->only(["id", "ua", "ip", "ref", "param2"]);
 
-        return response()->json($this->repository->all(
-            $request->input('limit'),
-            $request->input('offset'),
-            $request->input('sort_by'),
-            $request->input('order'),
-            $filters
-        ));
+        return response()->json([
+            'data' =>   $this->repository->all(
+                $request->input('limit'),
+                $request->input('offset'),
+                $request->input('sort_by'),
+                $request->input('order'),
+                $filters
+            ),
+            'total_count' => $this->repository->getSelectAllRowsCount()
+        ]);
     }
 
     /**

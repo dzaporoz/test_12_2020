@@ -21,7 +21,7 @@
             <!-- Theme style -->
             <link rel="stylesheet" href="{{ mix('css/adminlte.min.css') }}">
 
-
+            @yield('styles')
 
 {{--            <!-- Core JS files -->--}}
 {{--            <script defer type="text/javascript" src="{{ asset ("/limitless/assets/js/plugins/loaders/pace.min.js")}}"></script>--}}

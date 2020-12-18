@@ -33,13 +33,16 @@ class BadDomainController extends Controller
      */
     public function index(GetBadDomainsRequest $request): JsonResponse
     {
-        return response()->json($this->repository->all(
-            $request->input('limit'),
-            $request->input('offset'),
-            $request->input('sort_by'),
-            $request->input('order'),
-            $request->only("name")
-        ));
+        return response()->json([
+            'data' => $this->repository->all(
+                $request->input('limit'),
+                $request->input('offset'),
+                $request->input('sort_by'),
+                $request->input('order'),
+                $request->only("name")
+            ),
+            'total_count' => $this->repository->getSelectAllRowsCount()
+        ]);
     }
 
     /**
