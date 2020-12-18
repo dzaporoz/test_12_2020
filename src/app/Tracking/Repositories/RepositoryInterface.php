@@ -9,9 +9,14 @@ use Illuminate\Database\Eloquent\Model;
 
 interface RepositoryInterface
 {
+    /**
+     * Returns a number of total rows for the last query in method all()
+     * Result can be used for pagination
+     * @return int
+     */
     public function getSelectAllRowsCount(): int;
 
-    public function all(int $limit, int $offset, ?string $sort_by, ?string $order, array $filters = []): Collection;
+    public function all(int $limit, int $offset, string $sort_by = null, string $order = null, array $filters = []): Collection;
 
     public function find($id): Model;
 
