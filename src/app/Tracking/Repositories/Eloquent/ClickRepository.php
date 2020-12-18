@@ -4,11 +4,9 @@
 namespace App\Tracking\Repositories\Eloquent;
 
 
-use App\Tracking\Exceptions\EntryAlreadyExistsException;
 use App\Tracking\Models\Click;
 use App\Tracking\Repositories\ClickRepositoryInterface;
-use Illuminate\Contracts\Support\Jsonable;
-use Illuminate\Database\QueryException;
+use Illuminate\Database\Eloquent\Model;
 use Ramsey\Uuid\Uuid;
 
 class ClickRepository extends AbstractEloquentRepository implements ClickRepositoryInterface
@@ -20,7 +18,7 @@ class ClickRepository extends AbstractEloquentRepository implements ClickReposit
         return $this->model;
     }
 
-    public function create(array $data) : Jsonable {
+    public function create(array $data) : Model {
         $model = $this->getModel()::make($data);
         $model->id = Uuid::uuid4();
         $model->save();
@@ -28,7 +26,7 @@ class ClickRepository extends AbstractEloquentRepository implements ClickReposit
         return $model;
     }
 
-    public function searchForDuplicate(?string $ip, ?string $ua, ?string $ref, ?string $param1) : ?Jsonable {
+    public function searchForDuplicate(?string $ip, ?string $ua, ?string $ref, ?string $param1) : ?Model {
         return $this->getModel()::where('ip', $ip)
             ->where('ua', $ua)
             ->where('ref', $ref)

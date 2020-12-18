@@ -5,7 +5,8 @@ namespace App\Tracking\Repositories\Eloquent;
 
 
 use App\Tracking\Repositories\RepositoryInterface;
-use Illuminate\Contracts\Support\Jsonable;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Collection;
 use Illuminate\Database\Query\Builder;
 
 abstract class AbstractEloquentRepository implements RepositoryInterface
@@ -19,7 +20,7 @@ abstract class AbstractEloquentRepository implements RepositoryInterface
         return $this->selectedRows;
     }
 
-    public function all(int $limit, int $offset, string $sort_by = null, string $order = null, array $filters = []): iterable
+    public function all(int $limit, int $offset, string $sort_by = null, string $order = null, array $filters = []): Collection
     {
         /** @var Builder $query */
         $query = $this->getModel()::query()
@@ -41,17 +42,17 @@ abstract class AbstractEloquentRepository implements RepositoryInterface
         return $query->get();
     }
 
-    public function find($id): Jsonable
+    public function find($id): Model
     {
         return $this->getModel()::findOrFail($id);
     }
 
-    public function create(array $data): Jsonable
+    public function create(array $data): Model
     {
         return $this->getModel()::create($data);
     }
 
-    public function update($id, array $data): Jsonable
+    public function update($id, array $data): Model
     {
         $model = $this->getModel()::findOrFail($id);
 

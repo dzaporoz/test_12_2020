@@ -6,7 +6,7 @@ namespace App\Tracking;
 
 use App\Tracking\Repositories\BadDomainRepositoryInterface;
 use App\Tracking\Repositories\ClickRepositoryInterface;
-use Illuminate\Contracts\Support\Jsonable;
+use Illuminate\Database\Eloquent\Model;
 
 class TrackingService implements TrackingServiceInterface
 {
@@ -38,7 +38,7 @@ class TrackingService implements TrackingServiceInterface
         }
 
         if (!empty($result['error'])) {
-            $click->error = $click->error + 1;
+            $click->error += 1;
         }
 
         $this->clickRepository->save($click);
@@ -47,7 +47,7 @@ class TrackingService implements TrackingServiceInterface
         return $result;
     }
 
-    protected function getDuplicateClick(array $data): ?Jsonable
+    protected function getDuplicateClick(array $data): ?Model
     {
         return $this->clickRepository->searchForDuplicate(
             $data['ip'] ?? null,
