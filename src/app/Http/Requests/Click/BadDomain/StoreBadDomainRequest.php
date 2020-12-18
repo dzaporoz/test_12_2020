@@ -24,7 +24,7 @@ class StoreBadDomainRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'  => 'sometimes|required|unique:App\Tracking\Models\BadDomain'
+            'name' => 'sometimes|required|unique:App\Tracking\Models\BadDomain'
         ];
     }
 }

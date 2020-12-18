@@ -78,7 +78,7 @@ class BadDomainController extends Controller
         return response()->json(
             $this->repository->update(
                 $request->input('bad_domain'), $request->all()
-        ));
+            ));
     }
 
     /**

@@ -24,7 +24,7 @@ class ShowBadDomainRequest extends FormRequest
     public function rules()
     {
         return [
-            'bad_domain'    => 'required|numeric|gt:0'
+            'bad_domain' => 'required|numeric|gt:0'
         ];
     }
 

@@ -4,26 +4,26 @@
 namespace App\Tracking\Repositories\Eloquent;
 
 
-use App\Tracking\Exceptions\ModelNotFoundException;
 use App\Tracking\Repositories\RepositoryInterface;
 use Illuminate\Contracts\Support\Jsonable;
 use Illuminate\Database\Query\Builder;
 
 abstract class AbstractEloquentRepository implements RepositoryInterface
 {
-    abstract public function getModel() : string;
+    abstract public function getModel(): string;
 
     protected $selectedRows = 0;
 
-    public function getSelectAllRowsCount() : int
+    public function getSelectAllRowsCount(): int
     {
         return $this->selectedRows;
     }
 
-    public function all(int $limit, int $offset, string $sort_by = null, string $order = null, array $filters = []) : iterable {
+    public function all(int $limit, int $offset, string $sort_by = null, string $order = null, array $filters = []): iterable
+    {
         /** @var Builder $query */
         $query = $this->getModel()::query()
-            ->when(! empty($filters), function ($q) use ($filters) {
+            ->when(!empty($filters), function ($q) use ($filters) {
                 foreach ($filters as $column => $value) {
                     $q->where($column, 'like', "%$value%");
                 }
@@ -41,17 +41,18 @@ abstract class AbstractEloquentRepository implements RepositoryInterface
         return $query->get();
     }
 
-    public function find($id) : Jsonable {
-        $model = $this->getModel()::findOrFail($id);
-
-        return $model;
+    public function find($id): Jsonable
+    {
+        return $this->getModel()::findOrFail($id);
     }
 
-    public function create(array $data) : Jsonable {
+    public function create(array $data): Jsonable
+    {
         return $this->getModel()::create($data);
     }
 
-    public function update($id, array $data) : Jsonable {
+    public function update($id, array $data): Jsonable
+    {
         $model = $this->getModel()::findOrFail($id);
 
         $model->update($data);
@@ -59,7 +60,8 @@ abstract class AbstractEloquentRepository implements RepositoryInterface
         return $model;
     }
 
-    public function delete($id) {
+    public function delete($id)
+    {
         $model = $this->getModel()::findOrFail($id);
 
         $model->delete();

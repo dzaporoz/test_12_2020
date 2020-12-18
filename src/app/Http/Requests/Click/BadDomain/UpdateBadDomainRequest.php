@@ -24,8 +24,8 @@ class UpdateBadDomainRequest extends FormRequest
     public function rules()
     {
         return [
-            'bad_domain' => 'required|numeric|gt:0',
-            'name'       => 'required'
+            'bad_domain'    => 'required|numeric|gt:0',
+            'name'          => 'required'
         ];
     }
 

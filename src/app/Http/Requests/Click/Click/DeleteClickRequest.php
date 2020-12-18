@@ -24,7 +24,7 @@ class DeleteClickRequest extends FormRequest
     public function rules()
     {
         return [
-            'click'    => 'required'
+            'click' => 'required'
         ];
     }
 

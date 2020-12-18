@@ -25,7 +25,7 @@ class AdminController extends Controller
     {
         $data = [
             'clicks' => $this->clickRepository->all(51, 0),
-            'domains'=> $this->badDomainsRepository->all(51, 0),
+            'domains' => $this->badDomainsRepository->all(51, 0),
         ];
 
         return view('tracking.admin', $data);

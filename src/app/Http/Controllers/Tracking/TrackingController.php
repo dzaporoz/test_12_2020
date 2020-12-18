@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Tracking;
 use App\Tracking\TrackingServiceInterface;
 use App\Tracking\Repositories\ClickRepositoryInterface;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Session;
 
 class TrackingController extends Controller
 {
@@ -50,25 +50,25 @@ class TrackingController extends Controller
 
     /**
      * @param Request $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
-    public function track(Request $request): \Illuminate\Http\RedirectResponse
+    public function track(Request $request): RedirectResponse
     {
         $clickParams = [
-            'ip'    => $this->getVisitorIp($request) ?: $request->ip(),
-            'ua'    => $request->userAgent(),
-            'ref'   => $request->server('HTTP_REFERER'),
-            'param1'=> $request->input('param1'),
-            'param2'=> $request->input('param2')
+            'ip' => $this->getVisitorIp($request) ?: $request->ip(),
+            'ua' => $request->userAgent(),
+            'ref' => $request->server('HTTP_REFERER'),
+            'param1' => $request->input('param1'),
+            'param2' => $request->input('param2')
         ];
 
         $result = $this->service->TrackClick($clickParams);
 
-        if (! empty($result['redirect'])) {
+        if (!empty($result['redirect'])) {
             $request->session()->flash('redirect', $result['redirect']);
         }
 
-        if (! empty($result['error'])) {
+        if (!empty($result['error'])) {
             $request->session()->flash('error', $result['error']);
             return redirect()->route('click.error', ['id' => $result['id']]);
         } else {
@@ -76,18 +76,18 @@ class TrackingController extends Controller
         }
     }
 
-    protected function getVisitorIp(Request $request) : ?string
+    protected function getVisitorIp(Request $request): ?string
     {
-        foreach (self::IP_SOURCES as $key){
+        foreach (self::IP_SOURCES as $key) {
             $ips = $request->server($key);
-            if ($ips !== null){
-                foreach (explode(',', $ips) as $ip){
+            if ($ips !== null) {
+                foreach (explode(',', $ips) as $ip) {
                     $ip = trim($ip);
                     if (filter_var(
-                        $ip,
-                        FILTER_VALIDATE_IP,
-                        FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE
-                        ) !== false){
+                            $ip,
+                            FILTER_VALIDATE_IP,
+                            FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE
+                        ) !== false) {
                         return $ip;
                     }
                 }

@@ -2,7 +2,6 @@
 
 namespace App\Tracking\Models;
 
-use Illuminate\Contracts\Support\Jsonable;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 

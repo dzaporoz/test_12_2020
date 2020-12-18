@@ -38,7 +38,7 @@ class ClickController extends Controller
         $filters = $request->only(["id", "ua", "ip", "ref", "param1", "param2"]);
 
         return response()->json([
-            'data' =>   $this->repository->all(
+            'data' => $this->repository->all(
                 $request->input('limit'),
                 $request->input('offset'),
                 $request->input('sort_by'),

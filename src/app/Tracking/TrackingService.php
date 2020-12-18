@@ -19,13 +19,13 @@ class TrackingService implements TrackingServiceInterface
         $this->clickRepository = $c;
     }
 
-    public function trackClick(array $data) : array
+    public function trackClick(array $data): array
     {
         $result = [];
         $badDomain = $this->getBadDomain($data);
         $click = $this->getDuplicateClick($data);
 
-        if (! $click) {
+        if (!$click) {
             $click = $this->clickRepository->create($data);
         } else {
             $result['error'] = "The entry already exists in table";
@@ -37,7 +37,7 @@ class TrackingService implements TrackingServiceInterface
             $click->bad_domain = 1;
         }
 
-        if (! empty($result['error'])) {
+        if (!empty($result['error'])) {
             $click->error = $click->error + 1;
         }
 
@@ -47,7 +47,7 @@ class TrackingService implements TrackingServiceInterface
         return $result;
     }
 
-    protected function getDuplicateClick(array $data) : ?Jsonable
+    protected function getDuplicateClick(array $data): ?Jsonable
     {
         return $this->clickRepository->searchForDuplicate(
             $data['ip'] ?? null,
@@ -57,7 +57,7 @@ class TrackingService implements TrackingServiceInterface
         );
     }
 
-    protected function getBadDomain(array $data) : ?string
+    protected function getBadDomain(array $data): ?string
     {
         if (empty($data['ref'])) {
             return null;

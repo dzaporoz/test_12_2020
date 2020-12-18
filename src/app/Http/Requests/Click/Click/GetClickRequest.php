@@ -24,7 +24,7 @@ class GetClickRequest extends FormRequest
     public function rules()
     {
         return [
-            'id'    => 'required|numeric|gt:0'
+            'id' => 'required|numeric|gt:0'
         ];
     }
 

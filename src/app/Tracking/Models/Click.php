@@ -4,7 +4,6 @@ namespace App\Tracking\Models;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
-use Ramsey\Uuid\Uuid;
 
 /**
  * @mixin Builder
