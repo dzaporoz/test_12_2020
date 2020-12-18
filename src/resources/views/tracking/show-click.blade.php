@@ -10,7 +10,8 @@
                 <!-- /.box-header -->
                 <div class="card-body">
                     <table class="table table-bordered">
-                        <tbody><tr>
+                        <tbody>
+                        <tr>
                             <th style="width: 10px">#</th>
                             <th>Parameter</th>
                             <th>Value</th>
@@ -55,7 +56,8 @@
                             <td>Bad domain</td>
                             <td>{{ $click->bad_domain }}</td>
                         </tr>
-                        </tbody></table>
+                        </tbody>
+                    </table>
                 </div>
                 <!-- /.box-body -->
             </div>
@@ -76,7 +78,9 @@
 
     @if(session('redirect'))
         <script>
-            setTimeout(function(){ window.location = {{ session('redirect') }}; }, 5000);
+            setTimeout(function () {
+                window.location = {{ session('redirect') }};
+            }, 5000);
         </script>
     @endif
 @endsection
