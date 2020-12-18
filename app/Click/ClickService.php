@@ -22,9 +22,6 @@ class ClickService implements ClickServiceInterface
     public function trackClick(array $data) : array
     {
         $result = [];
-        if (! empty($data['param1'])) {
-            $data['ref'] = ($data['ref'] ?? '') . $data['param1'];
-        }
         $badDomain = $this->getBadDomain($data);
         $click = $this->getDuplicateClick($data);
 
@@ -55,7 +52,8 @@ class ClickService implements ClickServiceInterface
         return $this->clickRepository->searchForDuplicate(
             $data['ip'] ?? null,
             $data['ua'] ?? null,
-            $data['ref'] ?? null
+            $data['ref'] ?? null,
+            $data['param1'] ?? null
         );
     }
 

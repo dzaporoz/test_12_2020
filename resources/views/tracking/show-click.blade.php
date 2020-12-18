@@ -37,11 +37,21 @@
                         </tr>
                         <tr>
                             <td>5.</td>
+                            <td>Param 1</td>
+                            <td>{{ $click->param1 }}</td>
+                        </tr>
+                        <tr>
+                            <td>6.</td>
+                            <td>Param 2</td>
+                            <td>{{ $click->param2 }}</td>
+                        </tr>
+                        <tr>
+                            <td>7.</td>
                             <td>Error</td>
                             <td>{{ $click->error }}</td>
                         </tr>
                         <tr>
-                            <td>6.</td>
+                            <td>8.</td>
                             <td>Bad domain</td>
                             <td>{{ $click->bad_domain }}</td>
                         </tr>

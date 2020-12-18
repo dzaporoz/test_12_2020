@@ -17,7 +17,8 @@ class CreateClicksTable extends Migration
             $table->uuid('id')->unique();
             $table->string("ua", 200)->nullable();
             $table->ipAddress("ip");
-            $table->string("ref", 510)->nullable();
+            $table->string("ref", 410)->nullable();
+            $table->string("param1", 100)->nullable();
             $table->string("param2", 100)->nullable();
             $table->unsignedInteger("error")->default(0);
             $table->bigInteger("bad_domain")->default(0);

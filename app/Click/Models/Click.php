@@ -20,6 +20,7 @@ class Click extends Model
         "ip",
         "ref",
         "param2",
+        "param1",
         "error",
         "bad_domain"
     ];

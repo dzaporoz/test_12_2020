@@ -26,6 +26,7 @@
                                                 <th class="sorting" tabindex="0" aria-controls="example2">User Agent</th>
                                                 <th class="sorting" tabindex="0" aria-controls="example2">IP</th>
                                                 <th class="sorting" tabindex="0" aria-controls="example2">Referer</th>
+                                                <th class="sorting" tabindex="0" aria-controls="example2">Param1</th>
                                                 <th class="sorting" tabindex="0" aria-controls="example2">Param2</th>
                                                 <th class="sorting" tabindex="0" aria-controls="example2">Error</th>
                                                 <th class="sorting" tabindex="0" aria-controls="example2">Bad Domain</th>
@@ -37,6 +38,7 @@
                                                     <td>{{ $click->ua }}</td>
                                                     <td>{{ $click->ip }}</td>
                                                     <td>{{ $click->ref }}</td>
+                                                    <td>{{ $click->param1 }}</td>
                                                     <td>{{ $click->param2 }}</td>
                                                     <td>{{ $click->error }}</td>
                                                     <td>{{ $click->bad_domain }}</td>
@@ -44,7 +46,7 @@
                                             @endforeach
                                             </tbody>
                                                 <tfoot>
-                                                <tr><th>ID</th><th>User Agent</th><th>IP</th><th>Referer</th><th>Param2</th><th>Error</th><th>Bad Domain</th></tr>
+                                                <tr><th>ID</th><th>User Agent</th><th>IP</th><th>Referer</th><th>Param1</th><th>Param2</th><th>Error</th><th>Bad Domain</th></tr>
                                                 </tfoot>
                                         </table></div></div>
                                 </div>
@@ -206,6 +208,7 @@
                     { data: 'ua' },
                     { data: 'ip' },
                     { data: 'ref' },
+                    { data: 'param1' },
                     { data: 'param2' },
                     { data: 'error' },
                     { data: 'bad_domain' },

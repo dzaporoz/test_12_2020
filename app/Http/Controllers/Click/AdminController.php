@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers\Click;
 
-use App\Click\ClickServiceInterface;
 use App\Click\Repositories\BadDomainRepositoryInterface;
 use App\Click\Repositories\ClickRepositoryInterface;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\View\View;
 
 class AdminController extends Controller
 {

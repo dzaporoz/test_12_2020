@@ -35,7 +35,7 @@ class ClickController extends Controller
      */
     public function index(GetClicksRequest $request): JsonResponse
     {
-        $filters = $request->only(["id", "ua", "ip", "ref", "param2"]);
+        $filters = $request->only(["id", "ua", "ip", "ref", "param1", "param2"]);
 
         return response()->json([
             'data' =>   $this->repository->all(

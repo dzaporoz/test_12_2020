@@ -23,10 +23,11 @@ class ClickRepository extends AbstractEloquentRepository implements ClickReposit
         return $this->getModel()::create($data);
     }
 
-    public function searchForDuplicate(?string $ip, ?string $ua, ?string $ref) : ?Jsonable {
+    public function searchForDuplicate(?string $ip, ?string $ua, ?string $ref, ?string $param1) : ?Jsonable {
         return $this->getModel()::where('ip', $ip)
             ->where('ua', $ua)
             ->where('ref', $ref)
+            ->where('param1', $param1)
             ->first();
     }
 
