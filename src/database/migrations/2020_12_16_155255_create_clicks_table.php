@@ -13,7 +13,7 @@ class CreateClicksTable extends Migration
      */
     public function up()
     {
-        Schema::create('clicks', function (Blueprint $table) {
+        Schema::create('click', function (Blueprint $table) {
             $table->uuid('id')->unique();
             $table->string("ua", 200)->nullable();
             $table->ipAddress("ip");
@@ -24,7 +24,7 @@ class CreateClicksTable extends Migration
             $table->bigInteger("bad_domain")->default(0);
 
             $table->primary('id');
-            $table->index("ip");
+            $table->index(['ip', 'ua', 'ref', 'param1']);
         });
     }
 
@@ -35,6 +35,6 @@ class CreateClicksTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('clicks');
+        Schema::dropIfExists('click');
     }
 }

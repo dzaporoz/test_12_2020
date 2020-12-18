@@ -15,6 +15,8 @@ class Click extends Model
 
     public $incrementing = false;
 
+    public $table = "click";
+
     protected $fillable = [
         "ua",
         "ip",
